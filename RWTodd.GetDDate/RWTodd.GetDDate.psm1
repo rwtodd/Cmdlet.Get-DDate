@@ -26,18 +26,6 @@ function Get-Ddate {
 
     Write-Verbose "Date is $Date"
 
-    # determine the best format to use...
-    if ($Format.Length -eq 0) {
-        $today = [DateTime]::Now
-        if (($Date.DayOfYear -eq $today.DayOfYear) -and ($Date.Year -eq $today.Year)) {
-            $Format = "Today is %{%A, the %e day of %B%} in the YOLD %Y%N%nCelebrate %H"
-        }
-        else {
-            $Format = "%{%A, %B %d%}, %Y YOLD"
-        }
-    }
-    Write-Verbose "Format is: <$Format>"
-
     # Calculate a result object
     $adjustedYDay = $Date.DayOfYear - 1
     if ([DateTime]::IsLeapYear($Date.Year) -and ($Date.Month -gt 2)) {
@@ -73,6 +61,17 @@ function Get-Ddate {
     if ($AsObject) { return $result; }
 
     # ok, an object wasn't asked for, so return a formatted string
+    if ($Format.Length -eq 0) {
+        $today = [DateTime]::Now
+        if (($Date.DayOfYear -eq $today.DayOfYear) -and ($Date.Year -eq $today.Year)) {
+            $Format = "Today is %{%A, the %e day of %B%} in the YOLD %Y%N%nCelebrate %H"
+        }
+        else {
+            $Format = "%{%A, %B %d%}, %Y YOLD"
+        }
+    }
+    Write-Verbose "Format is: <$Format>"
+
     if (($result.DayOfSeason -lt 10) -or ($result.DayOfSeason -gt 20)) {
         $ordinal = switch ($result.DayOfSeason % 10) {
             1 { "st" }
@@ -84,6 +83,7 @@ function Get-Ddate {
     else {
         $ordinal = "th"
     }
+
     $callback = {
         param($match)
         switch -CaseSensitive ($match.Groups[1].Value) {
