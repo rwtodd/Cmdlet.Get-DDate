@@ -1,7 +1,9 @@
 # Discordian Date Cmdlet
 
-This is a powershell version of the UNIX ddate utility.  At the moment
-it is a script, but I plan to turn it into a module, as soon as I figure out how to do that...
+This is a powershell version of the UNIX ddate utility.  It does all the same formatting, but
+can also return a powershell object with properties for the day and season, etc. 
 
+It is loadable as a module, and I'm in the process of getting it properly packaged and documented.
+Also, I'd like to make the -Format and -AsObject parameters mutually exclusive.
 More to come...
 
