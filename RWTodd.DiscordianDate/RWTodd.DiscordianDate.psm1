@@ -21,7 +21,7 @@ function Get-DDate {
         [Parameter(ParameterSetName="FormatSet")]
         [string] $Format = "",
 
-        [Parameter(ParameterSetName="ObjectSet")]
+        [Parameter(Mandatory=$true,ParameterSetName="ObjectSet")]
         [Switch] $AsObject
     )
 

@@ -19,7 +19,7 @@ Get-DDate [[-Date] <DateTime>] [-Format <String>] [<CommonParameters>]
 
 ### ObjectSet
 ```
-Get-DDate [[-Date] <DateTime>] [-AsObject] [<CommonParameters>]
+Get-DDate [[-Date] <DateTime>] -AsObject [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Type: SwitchParameter
 Parameter Sets: ObjectSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
