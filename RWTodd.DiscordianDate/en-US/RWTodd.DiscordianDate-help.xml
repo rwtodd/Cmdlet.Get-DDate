@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-DDate</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>DDate</command:noun>
+      <maml:description>
+        <maml:para>Converts dates to the Discordian calendar.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command supports all options present in the UNIX `ddate` utility.  With no arguments, it displays the current date in a default congenial format.  Custom format strings can be provided with the `-Format` parameter. In addition, when given the `-AsObject` parameter, this utility returns a Powershell object with properties for various aspects of the Discordian date. I'd like to see the venerable `ddate` utility do that!</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-DDate</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Date</maml:name>
+          <maml:Description>
+            <maml:para>The Gregorian-calendar date to convert to Discordian.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+          <dev:type>
+            <maml:name>DateTime</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>AsObject</maml:name>
+          <maml:Description>
+            <maml:para>Return a powershell object as the result, with properties for aspects of the Discordian Date.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-DDate</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Date</maml:name>
+          <maml:Description>
+            <maml:para>The Gregorian-calendar date to convert to Discordian.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+          <dev:type>
+            <maml:name>DateTime</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Format</maml:name>
+          <maml:Description>
+            <maml:para>The format string. When a format is not given, a default one is provided by the tool.  The flags allowed in the format string are the following:</maml:para>
+            <maml:para>%% Outputs a literal percent sign.</maml:para>
+            <maml:para>%n Outputs a newline.</maml:para>
+            <maml:para>%t Outputs a tab.</maml:para>
+            <maml:para>%A Outputs the Discordian weekday.</maml:para>
+            <maml:para>%a Outputs an abbreviation for the Discordian weekday.</maml:para>
+            <maml:para>%B Outputs the Discordian Season.</maml:para>
+            <maml:para>%b Outputs an abbreviation for the Discordian Season.</maml:para>
+            <maml:para>%d Outputs the day of the season.</maml:para>
+            <maml:para>%e Outputs the ordinal-number version of the day (e.g., `3rd` `24th`)</maml:para>
+            <maml:para>%H Outputs the name of the current Holy Day, if any.</maml:para>
+            <maml:para>%X Outputs the number of days left until X-Day</maml:para>
+            <maml:para>%Y Outputs the Discordian year.</maml:para>
+            <maml:para>%. Outputs a random exclamation.</maml:para>
+            <maml:para>%N Removes the rest of the format string, unless it is a Holy Day.</maml:para>
+            <maml:para>%{ ... %}  Outputs "St. Tib's Day" on St. Tib's Day, and removes everything between the brackets. Otherwise, formats everything between the brackets.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>AsObject</maml:name>
+        <maml:Description>
+          <maml:para>Return a powershell object as the result, with properties for aspects of the Discordian Date.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Date</maml:name>
+        <maml:Description>
+          <maml:para>The Gregorian-calendar date to convert to Discordian.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Format</maml:name>
+        <maml:Description>
+          <maml:para>The format string. When a format is not given, a default one is provided by the tool.  The flags allowed in the format string are the following:</maml:para>
+          <maml:para>%% Outputs a literal percent sign.</maml:para>
+          <maml:para>%n Outputs a newline.</maml:para>
+          <maml:para>%t Outputs a tab.</maml:para>
+          <maml:para>%A Outputs the Discordian weekday.</maml:para>
+          <maml:para>%a Outputs an abbreviation for the Discordian weekday.</maml:para>
+          <maml:para>%B Outputs the Discordian Season.</maml:para>
+          <maml:para>%b Outputs an abbreviation for the Discordian Season.</maml:para>
+          <maml:para>%d Outputs the day of the season.</maml:para>
+          <maml:para>%e Outputs the ordinal-number version of the day (e.g., `3rd` `24th`)</maml:para>
+          <maml:para>%H Outputs the name of the current Holy Day, if any.</maml:para>
+          <maml:para>%X Outputs the number of days left until X-Day</maml:para>
+          <maml:para>%Y Outputs the Discordian year.</maml:para>
+          <maml:para>%. Outputs a random exclamation.</maml:para>
+          <maml:para>%N Removes the rest of the format string, unless it is a Holy Day.</maml:para>
+          <maml:para>%{ ... %}  Outputs "St. Tib's Day" on St. Tib's Day, and removes everything between the brackets. Otherwise, formats everything between the brackets.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Unless the command is run with `-AsObject`, a formatted string is returned.</maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>When run with `-AsObject`, an object is returned with properties for aspects of the Discordian date.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-DDate 2020-2-19
+Setting Orange, Chaos 50, 3186 YOLD</dev:code>
+        <dev:remarks>
+          <maml:para>The given date is converted to a discordian date and described.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-DDate 2020-2-19 -AsObject
+
+Year          : 3186
+Season        : Chaos
+SeasonAbbrev  : Chs
+DayOfSeason   : 50
+Weekday       : Setting Orange
+WeekdayAbbrev : SO
+IsTibs        : False
+IsHolyDay     : True
+HolyDay       : Chaoflux
+DaysTilXDay   : 2425712</dev:code>
+        <dev:remarks>
+          <maml:para>The given date is converted to a discordian date and  returned as an object.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-DDate 2020-2-19 -Format "Why it's %A, the %e of %B!"
+Why it's Setting Orange, the 50th of Chaos!</dev:code>
+        <dev:remarks>
+          <maml:para>A custom format string is used.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Wikipedia Entry for Discordian Calendar</maml:linkText>
+        <maml:uri>https://en.wikipedia.org/wiki/Discordian_calendar</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

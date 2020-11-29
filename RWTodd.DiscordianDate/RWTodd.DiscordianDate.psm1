@@ -12,15 +12,16 @@ $EXCLAIM = "Hail Eris!", "All Hail Discordia!", "Kallisti!", "Fnord.", "Or not."
     "You are what you see.", "Or is it?", "This statement is false.", `
     "Lies and slander, sire!", "Hee hee hee!", "Hail Eris, Hack Powershell!"
 
-function Get-Ddate {
+function Get-DDate {
     [CmdletBinding()]
     param (
         [Parameter(Position = 0)]
         [DateTime] $Date = [DateTime]::Now,
 
-        [Parameter()]
+        [Parameter(ParameterSetName="FormatSet")]
         [string] $Format = "",
 
+        [Parameter(ParameterSetName="ObjectSet")]
         [Switch] $AsObject
     )
 
