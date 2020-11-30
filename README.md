@@ -5,6 +5,39 @@ can also return a powershell object with properties for the day and season, etc.
 
 It is loadable as a module, and has a suitable XML help file.
 
+I added it to the (PowerShell Gallery)[https://www.powershellgallery.com/packages/RWTodd.DiscordianDate/1.0], so you should be able to install it like so:
+
+```powershell
+PS> Install-Module -Name RWTodd.DiscordianDate -Repository PSGallery
+```
+
+## Examples
+
+```powershell
+PS C:\> Get-DDate 2020-2-19
+Setting Orange, Chaos 50, 3186 YOLD
+```
+
+```powershell
+PS C:\> Get-DDate 2020-2-19 -AsObject
+
+Year          : 3186
+Season        : Chaos
+SeasonAbbrev  : Chs
+DayOfSeason   : 50
+Weekday       : Setting Orange
+WeekdayAbbrev : SO
+IsTibs        : False
+IsHolyDay     : True
+HolyDay       : Chaoflux
+DaysTilXDay   : 2425712
+```
+
+```powershell
+PS C:\> Get-DDate 2020-2-19 -Format "Why it's %A, the %e of %B!"
+Why it's Setting Orange, the 50th of Chaos!
+```
+
 ## Development Notes
 
 ### platyPS
