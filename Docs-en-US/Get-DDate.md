@@ -12,24 +12,19 @@ Converts dates to the Discordian calendar.
 
 ## SYNTAX
 
-### FormatSet
 ```
 Get-DDate [[-Date] <DateTime>] [-Format <String>] [<CommonParameters>]
 ```
 
-### ObjectSet
-```
-Get-DDate [[-Date] <DateTime>] -AsObject [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The command supports all options present in the UNIX `ddate` utility.  With no arguments, it displays the current date in a default congenial format.  Custom format strings can be provided with the `-Format` parameter. In addition, when given the `-AsObject` parameter, this utility returns a Powershell object with properties for various aspects of the Discordian date. I'd like to see the venerable `ddate` utility do that!
+The command supports all options present in the UNIX `ddate` utility.  With no arguments, it formats the current date in a default, friendly format.  Custom format strings can be provided with the `-Format` parameter. Though the default display is the formatted string, this utility actually returns a Powershell object with properties for various aspects of the Discordian date. I'd like to see the venerable `ddate` utility do that!
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Get-DDate 2020-2-19
+
 Setting Orange, Chaos 50, 3186 YOLD
 ```
 
@@ -37,7 +32,7 @@ The given date is converted to a discordian date and described.
 
 ### Example 2
 ```powershell
-PS C:\> Get-DDate 2020-2-19 -AsObject
+PS C:\> Get-DDate 2020-2-19 | Format-List
 
 Year          : 3186
 Season        : Chaos
@@ -49,36 +44,21 @@ IsTibs        : False
 IsHolyDay     : True
 HolyDay       : Chaoflux
 DaysTilXDay   : 2425712
+Formatted     : Setting Orange, Chaos 50, 3186 YOLD
 ```
 
-The given date is converted to a discordian date and
- returned as an object.
+The given date is converted to a discordian date and returned as an object.
 
 ### Example 3
 ```powershell
 PS C:\> Get-DDate 2020-2-19 -Format "Why it's %A, the %e of %B!"
+
 Why it's Setting Orange, the 50th of Chaos!
 ```
 
 A custom format string is used.
 
 ## PARAMETERS
-
-### -AsObject
-Return a powershell object as the result, with properties for
-aspects of the Discordian Date.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ObjectSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Date
 The Gregorian-calendar date to convert to Discordian.
@@ -130,7 +110,7 @@ The format string. When a format is not given, a default one is provided by the 
 
 ```yaml
 Type: String
-Parameter Sets: FormatSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -149,11 +129,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### String
-Unless the command is run with `-AsObject`, a formatted string is returned.
-
-### System.Object
-When run with `-AsObject`, an object is returned with properties for aspects of the Discordian date.
+### RWTodd.DiscordianDate.Date
+An object is returned with properties for aspects of the Discordian date.
 
 ## NOTES
 

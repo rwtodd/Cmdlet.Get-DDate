@@ -15,11 +15,12 @@ PS> Install-Module -Name RWTodd.DiscordianDate -Repository PSGallery
 
 ```powershell
 PS C:\> Get-DDate 2020-2-19
+
 Setting Orange, Chaos 50, 3186 YOLD
 ```
 
 ```powershell
-PS C:\> Get-DDate 2020-2-19 -AsObject
+PS C:\> Get-DDate 2020-2-19 | fl
 
 Year          : 3186
 Season        : Chaos
@@ -31,10 +32,12 @@ IsTibs        : False
 IsHolyDay     : True
 HolyDay       : Chaoflux
 DaysTilXDay   : 2425712
+Formatted     : Setting Orange, Chaos 50, 3186 YOLD
 ```
 
 ```powershell
 PS C:\> Get-DDate 2020-2-19 -Format "Why it's %A, the %e of %B!"
+
 Why it's Setting Orange, the 50th of Chaos!
 ```
 

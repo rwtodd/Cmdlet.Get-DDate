@@ -10,35 +10,9 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>The command supports all options present in the UNIX `ddate` utility.  With no arguments, it displays the current date in a default congenial format.  Custom format strings can be provided with the `-Format` parameter. In addition, when given the `-AsObject` parameter, this utility returns a Powershell object with properties for various aspects of the Discordian date. I'd like to see the venerable `ddate` utility do that!</maml:para>
+      <maml:para>The command supports all options present in the UNIX `ddate` utility.  With no arguments, it formats the current date in a default, friendly format.  Custom format strings can be provided with the `-Format` parameter. Though the default display is the formatted string, this utility actually returns a Powershell object with properties for various aspects of the Discordian date. I'd like to see the venerable `ddate` utility do that!</maml:para>
     </maml:description>
     <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Get-DDate</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
-          <maml:name>Date</maml:name>
-          <maml:Description>
-            <maml:para>The Gregorian-calendar date to convert to Discordian.</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-          <dev:type>
-            <maml:name>DateTime</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>AsObject</maml:name>
-          <maml:Description>
-            <maml:para>Return a powershell object as the result, with properties for aspects of the Discordian Date.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-DDate</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
@@ -83,18 +57,6 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>AsObject</maml:name>
-        <maml:Description>
-          <maml:para>Return a powershell object as the result, with properties for aspects of the Discordian Date.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Date</maml:name>
         <maml:Description>
@@ -148,18 +110,10 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>RWTodd.DiscordianDate.Date</maml:name>
         </dev:type>
         <maml:description>
-          <maml:para>Unless the command is run with `-AsObject`, a formatted string is returned.</maml:para>
-        </maml:description>
-      </command:returnValue>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>System.Object</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para>When run with `-AsObject`, an object is returned with properties for aspects of the Discordian date.</maml:para>
+          <maml:para>An object is returned with properties for aspects of the Discordian date.</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
@@ -172,6 +126,7 @@
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-DDate 2020-2-19
+
 Setting Orange, Chaos 50, 3186 YOLD</dev:code>
         <dev:remarks>
           <maml:para>The given date is converted to a discordian date and described.</maml:para>
@@ -179,7 +134,7 @@ Setting Orange, Chaos 50, 3186 YOLD</dev:code>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-DDate 2020-2-19 -AsObject
+        <dev:code>PS C:\&gt; Get-DDate 2020-2-19 | Format-List
 
 Year          : 3186
 Season        : Chaos
@@ -190,14 +145,16 @@ WeekdayAbbrev : SO
 IsTibs        : False
 IsHolyDay     : True
 HolyDay       : Chaoflux
-DaysTilXDay   : 2425712</dev:code>
+DaysTilXDay   : 2425712
+Formatted     : Setting Orange, Chaos 50, 3186 YOLD</dev:code>
         <dev:remarks>
-          <maml:para>The given date is converted to a discordian date and  returned as an object.</maml:para>
+          <maml:para>The given date is converted to a discordian date and returned as an object.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 3 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-DDate 2020-2-19 -Format "Why it's %A, the %e of %B!"
+
 Why it's Setting Orange, the 50th of Chaos!</dev:code>
         <dev:remarks>
           <maml:para>A custom format string is used.</maml:para>

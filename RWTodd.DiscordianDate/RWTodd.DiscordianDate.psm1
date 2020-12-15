@@ -18,11 +18,8 @@ function Get-DDate {
         [Parameter(Position = 0)]
         [DateTime] $Date = [DateTime]::Now,
 
-        [Parameter(ParameterSetName="FormatSet")]
-        [string] $Format = "",
-
-        [Parameter(Mandatory=$true,ParameterSetName="ObjectSet")]
-        [Switch] $AsObject
+        [Parameter()]
+        [string] $Format = ""
     )
 
     Write-Verbose "Date is $Date"
@@ -58,10 +55,7 @@ function Get-DDate {
         DaysTilXDay   = [Math]::Ceiling([datetime]::new(8661, 7, 5).Subtract($Date).TotalDays)
     }
 
-    # if they asked for an object, return it now
-    if ($AsObject) { return $result; }
-
-    # ok, an object wasn't asked for, so return a formatted string
+    # ok, generate the formatted string
     if ($Format.Length -eq 0) {
         $today = [DateTime]::Now
         if (($Date.DayOfYear -eq $today.DayOfYear) -and ($Date.Year -eq $today.Year)) {
@@ -113,5 +107,9 @@ function Get-DDate {
         $Format = $Format -replace '%{.*%}', $TIBS
     }
     # then, replace all the other %-codes
-    return ([regex]'%(.)').Replace($Format, $callback)
+    $Format = ([regex]'%(.)').Replace($Format, $callback)
+
+    Add-Member -InputObject $result -NotePropertyName "Formatted" -NotePropertyValue $Format
+    $result.PsObject.TypeNames.Insert(0,'RWTodd.DiscordianDate.Date')
+    Write-Output $result
 }
